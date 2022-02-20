@@ -113,6 +113,15 @@ use std::error::Error;
 #[allow(unused)]
 // Err in main function
 fn main() -> Result<(), Box<dyn Error>> {
+    // unwrap_or_else()
+    // if Result is an Ok, it perfroms similar to unwarp()
+    // if Err, call the code in closure (anonymous function)
+    let res = propagating_more().unwrap_or_else(|err| {
+        // todo if Err occurred
+        String::from("none")
+    });
+
+
     let f = File::open("hello.txt")?;
     // Ok() means execute successfully
     // Error could contain any type of err
