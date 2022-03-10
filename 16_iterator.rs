@@ -125,6 +125,36 @@ fn create_iterator() {
     }
 }
 
+fn clear_code() {
+    // the original way
+    pub fn search<'a>(query: &str, contents: &'a str) -> Vec<&'a str> {
+        let mut results = Vec::new();
+    
+        for line in contents.lines() {
+            if line.contains(query) {
+                results.push(line);
+            }
+        }
+    
+        results
+    }
+
+    // improveed by iterator
+    pub fn search<'a>(query: &str, contents: &'a str) -> Vec<&'a str> {
+        contents
+            .lines()
+            .filter(|line| line.contains(query))
+            .collect()å
+    }
+}
+
+// Iterators are one of Rust’s zero-cost abstractions, Iterators are one of Rust’s zero-cost abstractions
+// like c++, iterator is abstracted and has better performance
+// iterator will unroll(展开) the data set if it knows how many index target has 
+fn loop_vs_iterator() {
+
+}
+
 fn main() {
 
 }
